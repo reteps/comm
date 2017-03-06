@@ -1,9 +1,12 @@
 package main
 
-import "net"
-import "fmt"
-import "bufio"
-import "comm" c
+import (
+	"bufio"
+	c "comm"
+	"fmt"
+	"net"
+)
+
 func main() {
 
 	for {
