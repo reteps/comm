@@ -15,4 +15,5 @@ func main() {
 		fmt.Print("Text to send: ")
 		text, _ := reader.ReadString('\n')
 		conn.CliSend(text)
-		conn.Cli
+		message := conn.CliRead()
+		fmt.Println(message)
