@@ -9,8 +9,10 @@ import (
 
 func main() {
 	conn := c.Client()
-	conn.c.CliConnect()
+	conn.CliConnect()
 	for {
 		reader := bufio.NewReader(os.Stdin)
 		fmt.Print("Text to send: ")
 		text, _ := reader.ReadString('\n')
+		conn.CliSend(text)
+		conn.Cli
