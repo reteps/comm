@@ -1,18 +1,15 @@
 package main
 
 import (
-	"bufio"
 	c "comm"
 	"fmt"
-	"net"
 )
 
 func main() {
-	conn := c.Server(8081)
-	conn.ServStart()
+	conn := c.Start("8081")
 	for {
-		message := c.ServRead()
+		message := conn.Read()
 		fmt.Println("Got this from client" + message)
-		c.ServSend(message + "-FROM_SERVER")
+		conn.ServSend(message + "-FROM_SERVER")
 	}
 }

@@ -2,20 +2,19 @@ package main
 
 import (
 	"bufio"
+	c "comm"
 	"fmt"
-	c "go-comm/comm"
 	"os"
 )
 
 func main() {
-	conn := c.Client()
-	conn.CliConnect()
+	conn := c.Connect("45.55.91.237", "8081")
 	for {
 		reader := bufio.NewReader(os.Stdin)
 		fmt.Print("Text to send: ")
 		text, _ := reader.ReadString('\n')
 		conn.CliSend(text)
-		message := conn.CliRead()
+		message := conn.Read()
 		fmt.Println(message)
 	}
 }
