@@ -7,6 +7,7 @@ import "os"
 
 type Connection struct {
 	Link net.Conn
+	IsClient bool
 }
 
 func Start(port string) Connection {
@@ -22,18 +23,22 @@ func Start(port string) Connection {
 		panic(err)
 	}
 	fmt.Println("Connection Found!")
-	return Connection{connection}
+	return Connection{connection,false}
 }
 func (c Connection) Read() string {
 	message, err := bufio.NewReader(c.Link).ReadString(byte('`'))
 	if err != nil {
-		panic(err)
+		fmt.Println("The connection was interrupted by a loss of connection or control + c.")
+		os.Exit(2)
 	}
 	return message[:len(message)-1] //no strange character at end
 }
-func (c Connection) ServSend(text string) {
-
-	c.Link.Write([]byte(text + "`"))
+func (c Connection) Send(text string) {
+	if IsClient {
+		fmt.Fprintf(c.Link, text + "`")
+	} else {
+		c.Link.Write([]byte(text + "`"))
+	}
 }
 
 func Connect(ip, port string) Connection {
@@ -43,8 +48,6 @@ func Connect(ip, port string) Connection {
 		os.Exit(1)
 	}
 	fmt.Println("Connection Found!")
-	return Connection{connection}
+	return Connection{connection,true}
 }
-func (c Connection) CliSend(message string) {
-	fmt.Fprintf(c.Link, message+"`")
-}
+
