@@ -5,14 +5,14 @@ This program was based off the code [here](https://systembash.com/a-simple-go-tc
 
 Commands:
 
-`Connect(ip,port)`
+`connection := Start(port)`
+ + starts a server
+ 
+`connection := Connect(ip,port)`
  + connects to a server
  
-`Start(port)`
- + starts a servver
- 
-`message := Read()`
+`message := connection.Read()`
  + listens for a message and reads it
  
-`Send(message)`
+`connection.Send(message)`
  + sends a message to the server / client
