@@ -10,6 +10,6 @@ func main() {
 	for {
 		message := conn.Read()
 		fmt.Println("Got this from client: " + message)
-		conn.ServSend(message + "-FROM_SERVER")
+		conn.Send(message + "-FROM_SERVER")
 	}
 }
