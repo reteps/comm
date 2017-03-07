@@ -25,15 +25,15 @@ func Start(port string) Connection {
 	return Connection{connection}
 }
 func (c Connection) Read() string {
-	message, err := bufio.NewReader(c.Link).ReadString('\n')
+	message, err := bufio.NewReader(c.Link).ReadString(byte('¬'))
 	if err != nil {
 		panic(err)
 	}
-	return string(message)
+	return message[:len(message)-1] //no strange character at end
 }
-func (c Connection) ServSend(message string) {
+func (c Connection) ServSend(text string) {
 
-	c.Link.Write([]byte(message + "\n"))
+	c.Link.Write([]byte(text + "¬"))
 }
 
 func Connect(ip, port string) Connection {
@@ -46,5 +46,5 @@ func Connect(ip, port string) Connection {
 	return Connection{connection}
 }
 func (c Connection) CliSend(message string) {
-	fmt.Fprintf(c.Link, message+"\n")
+	fmt.Fprintf(c.Link, message+"¬")
 }
