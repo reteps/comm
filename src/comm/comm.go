@@ -5,19 +5,20 @@ import "fmt"
 import "bufio"
 
 type Server struct {
-	Port string
+	Connection net.Conn
 }
 
-func (s Server) ServStart() {
+func ServStart(port string) {
 
 	fmt.Println("Launching server...")
-	ln, _ := net.Listen("tcp", s.Port)
+	ln, _ := net.Listen("tcp", port)
 	fmt.Println("Listening for connection...")
-	s.Connection = ln.Accept()
+	connection, _ := ln.Accept()
 	fmt.Println("Connection Found!")
+	return Server{connection}
 }
 func (s Server) ServRead() {
-	message, _ := bufio.NewReader(s.Connection).ReadString("\nEND")
+	message, _ := bufio.NewReader(s.Connection).ReadString('\n')
 	return string(message)
 }
 func (s Server) ServSend(message string) {

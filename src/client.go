@@ -2,8 +2,8 @@ package main
 
 import (
 	"bufio"
-	c "comm"
 	"fmt"
+	c "go-comm/comm"
 	"os"
 )
 
@@ -17,3 +17,5 @@ func main() {
 		conn.CliSend(text)
 		message := conn.CliRead()
 		fmt.Println(message)
+	}
+}
