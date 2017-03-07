@@ -1,7 +1,7 @@
 # go-comm
 a simple server + client connection
 
-This program was based off the code [here][`https://systembash.com/a-simple-go-tcp-server-and-tcp-client/`].
+This program was based off the code [here](https://systembash.com/a-simple-go-tcp-server-and-tcp-client/).
 
 Commands:
 
