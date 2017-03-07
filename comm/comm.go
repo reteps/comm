@@ -34,7 +34,7 @@ func (c Connection) Read() string {
 	return message[:len(message)-1] //no strange character at end
 }
 func (c Connection) Send(text string) {
-	if IsClient {
+	if c.IsClient {
 		fmt.Fprintf(c.Link, text + "`")
 	} else {
 		c.Link.Write([]byte(text + "`"))
