@@ -25,7 +25,7 @@ func Start(port string) Connection {
 	return Connection{connection}
 }
 func (c Connection) Read() string {
-	message, err := bufio.NewReader(c.Link).ReadString(byte('¬'))
+	message, err := bufio.NewReader(c.Link).ReadString(byte('`'))
 	if err != nil {
 		panic(err)
 	}
@@ -33,7 +33,7 @@ func (c Connection) Read() string {
 }
 func (c Connection) ServSend(text string) {
 
-	c.Link.Write([]byte(text + "¬"))
+	c.Link.Write([]byte(text + "`"))
 }
 
 func Connect(ip, port string) Connection {
@@ -46,5 +46,5 @@ func Connect(ip, port string) Connection {
 	return Connection{connection}
 }
 func (c Connection) CliSend(message string) {
-	fmt.Fprintf(c.Link, message+"¬")
+	fmt.Fprintf(c.Link, message+"`")
 }

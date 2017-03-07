@@ -13,7 +13,7 @@ func main() {
 		reader := bufio.NewReader(os.Stdin)
 		fmt.Print("Text to send: ")
 		text, _ := reader.ReadString('\n')
-		conn.CliSend(text)
+		conn.CliSend(text[:len(text)-1])
 		message := conn.Read()
 		fmt.Println(message)
 	}
