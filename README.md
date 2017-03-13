@@ -16,3 +16,12 @@ Commands:
  
 `connection.Send(message)`
  + sends a message to the server / client
+
+Adding:
+
+`connection.GiveName(name)`
++ Gives a name to a connection
+`connection.SendTo(name)`
++ Sends a message to that connection *low priority*
+`connection.Close()`
++ Stops any future connections from joining
