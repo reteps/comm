@@ -1,4 +1,4 @@
-package comm
+package simplecomm
 
 import "net"
 import "fmt"
