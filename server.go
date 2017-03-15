@@ -1,8 +1,8 @@
 package main
 
 import (
-	c "comm"
 	"fmt"
+	c "github.com/reteps/comm/comm"
 )
 
 func main() {

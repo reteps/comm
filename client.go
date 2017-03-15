@@ -2,8 +2,8 @@ package main
 
 import (
 	"bufio"
-	c "comm"
 	"fmt"
+	c "github.com/reteps/comm/comm"
 	"os"
 )
 

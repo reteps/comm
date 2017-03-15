@@ -1,0 +1,2 @@
+export GOPATH=$HOME/repos/comm
+export PATH=$HOME/repos/comm/bin:$PATH
