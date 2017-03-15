@@ -1,4 +1,4 @@
-package simplecomm
+package comm
 
 import "net"
 import "fmt"
@@ -6,7 +6,7 @@ import "bufio"
 import "os"
 
 type Connection struct {
-	Link net.Conn
+	Link     net.Conn
 	IsClient bool
 }
 
@@ -23,7 +23,7 @@ func Start(port string) Connection {
 		panic(err)
 	}
 	fmt.Println("Connection Found!")
-	return Connection{connection,false}
+	return Connection{connection, false}
 }
 func (c Connection) Read() string {
 	message, err := bufio.NewReader(c.Link).ReadString(byte('`'))
@@ -35,7 +35,7 @@ func (c Connection) Read() string {
 }
 func (c Connection) Send(text string) {
 	if c.IsClient {
-		fmt.Fprintf(c.Link, text + "`")
+		fmt.Fprintf(c.Link, text+"`")
 	} else {
 		c.Link.Write([]byte(text + "`"))
 	}
@@ -48,6 +48,5 @@ func Connect(ip, port string) Connection {
 		os.Exit(1)
 	}
 	fmt.Println("Connection Found!")
-	return Connection{connection,true}
+	return Connection{connection, true}
 }
-
