@@ -1,5 +1,5 @@
 # comm
-a server + client connection library
+a simple 2 person server + client connection library
 
 This program was based off the code [here](https://systembash.com/a-simple-go-tcp-server-and-tcp-client/).
 
